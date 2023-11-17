@@ -12,6 +12,7 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
             <GroupBox Header="Развлечения">
                 
+                
             </GroupBox>
             <GroupBox Header="Просвещение">
                 
