@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CulturalCenter.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainMenu">
+      Title="Главное меню">
 
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Center">

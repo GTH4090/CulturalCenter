@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CulturalCenter.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EventPage" Loaded="Page_Loaded">
+      Title="События" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>

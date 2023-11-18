@@ -7,7 +7,7 @@
       xmlns:Models="clr-namespace:CulturalCenter.Models" x:Class="CulturalCenter.Pages.EventTypeEdit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EventTypeEdit" Loaded="Page_Loaded">
+      Title="Редактирование вида события" Loaded="Page_Loaded">
 
     <Page.Resources>
         <CollectionViewSource x:Key="eventTypeViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:EventType}}"/>
@@ -24,7 +24,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Column="0" Content="Name:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Content="Название:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="0" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             </Grid>
             <Button x:Name="OkBtn" Content="Ок" Click="OkBtn_Click"/>
