@@ -24,5 +24,27 @@ namespace CulturalCenter.Pages
         {
             InitializeComponent();
         }
+
+        private void EventBtn1_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EventPage());
+        }
+
+        private void EventTypeBtn1_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EventTypePage());
+        }
+
+        private void EventTypeBtn2_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(new EventTypePage());
+        }
+
+        private void EventBtn2_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EventPage());
+
+        }
     }
 }

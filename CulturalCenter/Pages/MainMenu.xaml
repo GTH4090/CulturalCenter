@@ -9,15 +9,22 @@
       Title="MainMenu">
 
     <Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
-            <GroupBox Header="Развлечения">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Center">
+            <GroupBox Header="Развлечения" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <Button x:Name="EventBtn1" Content="Мероприятия" Click="EventBtn1_Click"/>
+                    <Button x:Name="EventTypeBtn1" Content="Виды мероприятия" Click="EventTypeBtn1_Click"/>
+                </StackPanel>
                 
-                
+
             </GroupBox>
-            <GroupBox Header="Просвещение">
-                
+            <GroupBox Header="Просвещение" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <Button x:Name="EventBtn2" Content="Мероприятия" Click="EventBtn2_Click"/>
+                    <Button x:Name="EventTypeBtn2" Content="Виды мероприятия" Click="EventTypeBtn2_Click"/>
+                </StackPanel>
             </GroupBox>
-            <GroupBox Header="Образование"/>
+            <GroupBox Header="Образование" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         </StackPanel>
     </Grid>
 </Page>
