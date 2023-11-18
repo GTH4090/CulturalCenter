@@ -27,7 +27,7 @@
         <DataGrid x:Name="EventDg" SelectionMode="Single" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
                 
             </DataGrid.Columns>
         </DataGrid>
