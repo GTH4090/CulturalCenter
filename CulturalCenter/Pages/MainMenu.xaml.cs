@@ -46,5 +46,32 @@ namespace CulturalCenter.Pages
             NavigationService.Navigate(new EventPage());
 
         }
+
+        private void WorkTypeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new WorkTypePAge());
+        }
+
+        private void WorkOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.WorkOrderPage());
+
+        }
+
+        private void StatusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StatusPage());
+        }
+
+        private void RoomsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RoomsPage());
+        }
+
+        private void DesktopBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DesktopPage());
+
+        }
     }
 }

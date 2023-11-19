@@ -14,6 +14,11 @@
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <Button x:Name="EventBtn1" Content="Мероприятия" Click="EventBtn1_Click"/>
                     <Button x:Name="EventTypeBtn1" Content="Виды мероприятия" Click="EventTypeBtn1_Click"/>
+                    <Button x:Name="WorkTypeBtn" Content="Типы работы" Click="WorkTypeBtn_Click"/>
+                    <Button x:Name="WorkOrderBtn" Content="Заявки на работу" Click="WorkOrderBtn_Click"/>
+                    <Button x:Name="StatusBtn" Content="Статусы" Click="StatusBtn_Click"/>
+                    <Button x:Name="RoomsBtn" Content="Помещения" Click="RoomsBtn_Click"/>
+                    <Button x:Name="DesktopBtn" Content="Рабочий стол" Click="DesktopBtn_Click"/>
                 </StackPanel>
                 
 
@@ -22,9 +27,22 @@
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <Button x:Name="EventBtn2" Content="Мероприятия" Click="EventBtn2_Click"/>
                     <Button x:Name="EventTypeBtn2" Content="Виды мероприятия" Click="EventTypeBtn2_Click"/>
+                    <Button x:Name="WorkTypeBtn2" Content="Типы работы" Click="WorkTypeBtn_Click"/>
+                    <Button x:Name="WorkOrderBtn2" Content="Заявки на работу" Click="WorkOrderBtn_Click"/>
+                    <Button x:Name="StatusBtn2" Content="Статусы" Click="StatusBtn_Click"/>
+                    <Button x:Name="RoomsBtn2" Content="Помещения" Click="RoomsBtn_Click"/>
+                    <Button x:Name="DesktopBtn2" Content="Рабочий стол" Click="DesktopBtn_Click"/>
+
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Образование" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <GroupBox Header="Образование" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="RoomsBtn3" Content="Помещения" Click="RoomsBtn_Click"/>
+                    <Button x:Name="DesktopBtn3" Content="Рабочий стол" Click="DesktopBtn_Click"/>
+                </StackPanel>
+                
+
+            </GroupBox>
         </StackPanel>
     </Grid>
 </Page>

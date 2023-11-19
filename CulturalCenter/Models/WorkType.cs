@@ -12,20 +12,17 @@ namespace CulturalCenter.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Event
+    public partial class WorkType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Event()
+        public WorkType()
         {
             this.WorkOrder = new HashSet<WorkOrder>();
         }
     
         public long Id { get; set; }
-        public long EventTypeId { get; set; }
-        public string Date { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
     
-        public virtual EventType EventType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrder> WorkOrder { get; set; }
     }

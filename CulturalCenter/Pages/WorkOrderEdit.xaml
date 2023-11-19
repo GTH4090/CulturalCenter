@@ -1,0 +1,51 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CulturalCenter.Pages"
+      xmlns:Models="clr-namespace:CulturalCenter.Models" x:Class="CulturalCenter.Pages.WorkOrderEdit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Редактирование заявки на работы" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="workOrderViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:WorkOrder}}"/>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid x:Name="grid1" DataContext="{StaticResource workOrderViewSource}" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Content="Date End:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dateEndDp" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120"/>
+            <Label Grid.Column="0" Content="Date Start:" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dateStartDp" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
+            <Label Grid.Column="0" Content="Description:" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="descriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="3" Grid.Row="2" Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Grid.Column="0" Content="Event Id:" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <ComboBox x:Name="eventCbx" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="3" SelectedItem="{Binding Event}" DisplayMemberPath="Description" VerticalAlignment="Center" Width="120"/>
+            <Label Grid.Column="0" Content="Room Id:" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <ComboBox x:Name="roomCbx" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="4" SelectedItem="{Binding Room}" DisplayMemberPath="Name" VerticalAlignment="Center" Width="120"/>
+            <Label Grid.Column="0" Content="Status Id:" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <ComboBox x:Name="statusCbx" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="5" SelectedItem="{Binding Status}" DisplayMemberPath="Name" VerticalAlignment="Center" Width="120"/>
+            <Label Grid.Column="0" Content="Work Type Id:" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="workTypeCbx" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="6" SelectedItem="{Binding WorkType}" DisplayMemberPath="Name" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+            <Button x:Name="OkBtn" Content="Ок" Click="OkBtn_Click"/>
+            <Button x:Name="CancelBtn" Content="Отмена" Click="CancelBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

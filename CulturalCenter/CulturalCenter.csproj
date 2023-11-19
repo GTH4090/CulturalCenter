@@ -117,6 +117,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Models\WorkTypeEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DesktopPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\EventEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,28 +145,74 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RoomEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoomsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StatusEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StatusPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorkOrderEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorkOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorkTypePAge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CultureModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CultureModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CultureModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CultureModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CultureModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CultureModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Event.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>CultureModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventType.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>CultureModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+    <Compile Include="Models\Room.cs">
+      <DependentUpon>CultureModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Models\Status.cs">
+      <DependentUpon>CultureModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Compile Include="Models\WorkOrder.cs">
+      <DependentUpon>CultureModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkType.cs">
+      <DependentUpon>CultureModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkTypeEdit.xaml.cs">
+      <DependentUpon>WorkTypeEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DesktopPage.xaml.cs">
+      <DependentUpon>DesktopPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EventEdit.xaml.cs">
       <DependentUpon>EventEdit.xaml</DependentUpon>
@@ -174,6 +228,27 @@
     </Compile>
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoomEdit.xaml.cs">
+      <DependentUpon>RoomEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoomsPage.xaml.cs">
+      <DependentUpon>RoomsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StatusEdit.xaml.cs">
+      <DependentUpon>StatusEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StatusPage.xaml.cs">
+      <DependentUpon>StatusPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkOrderEdit.xaml.cs">
+      <DependentUpon>WorkOrderEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkOrderPage.xaml.cs">
+      <DependentUpon>WorkOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkTypePAge.xaml.cs">
+      <DependentUpon>WorkTypePAge.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -196,16 +271,21 @@
     <None Include="Database\CulturalCenter.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\CultureModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>CultureModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="Models\CultureModel.edmx.diagram">
+      <DependentUpon>CultureModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Event.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.EventType.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.Room.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.Status.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.WorkOrder.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.WorkType.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.WorkTypeEdit.datasource" />
     <None Include="Properties\DataSources\Event.datasource" />
     <None Include="Properties\DataSources\EventType.datasource" />
     <None Include="Properties\Settings.settings">
@@ -220,18 +300,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
@@ -242,6 +310,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\CultureModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CultureModel.edmx</DependentUpon>
+      <LastGenOutput>CultureModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CultureModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CultureModel.edmx</DependentUpon>
+      <LastGenOutput>CultureModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
