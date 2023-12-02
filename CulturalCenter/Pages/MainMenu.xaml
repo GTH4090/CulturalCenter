@@ -19,6 +19,8 @@
                     <Button x:Name="StatusBtn" Content="Статусы" Click="StatusBtn_Click"/>
                     <Button x:Name="RoomsBtn" Content="Помещения" Click="RoomsBtn_Click"/>
                     <Button x:Name="DesktopBtn" Content="Рабочий стол" Click="DesktopBtn_Click"/>
+                    <Button x:Name="RentBtn" Content="Бронировать помещение" Width="Auto" Click="RentBtn_Click"/>
+                    <Button x:Name="FreeroomsBtn" Content="Свободные помещения" Click="FreeroomsBtn_Click" Width="Auto"/>
                 </StackPanel>
                 
 
@@ -32,7 +34,8 @@
                     <Button x:Name="StatusBtn2" Content="Статусы" Click="StatusBtn_Click"/>
                     <Button x:Name="RoomsBtn2" Content="Помещения" Click="RoomsBtn_Click"/>
                     <Button x:Name="DesktopBtn2" Content="Рабочий стол" Click="DesktopBtn_Click"/>
-
+                    <Button x:Name="RentBtn2" Content="Бронировать помещение" Width="Auto" Click="RentBtn_Click"/>
+                    <Button x:Name="FreeroomsBtn2" Content="Свободные помещения" Click="FreeroomsBtn_Click" Width="Auto"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Образование" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">

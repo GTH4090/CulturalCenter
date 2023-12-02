@@ -46,6 +46,7 @@
             <Button x:Name="AddBtn" Content="Добавить" Click="AddBtn_Click"/>
             <Button x:Name="EditBtn" Content="Изменить" Click="EditBtn_Click"/>
             <Button x:Name="DeleteBtn" Content="Удалить" Click="DeleteBtn_Click"/>
+            <Button x:Name="RentBtn" Content="Бронировать помещение" Click="RentBtn_Click" Width="Auto"/>
         </StackPanel>
     </Grid>
 </Page>

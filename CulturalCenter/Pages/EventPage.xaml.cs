@@ -133,5 +133,18 @@ namespace CulturalCenter.Pages
             }
             
         }
+
+        private void RentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(EventDg.SelectedItem != null)
+            {
+                var item = EventDg.SelectedItem as Event;
+                NavigationService.Navigate(new RentRoomPage(item.Id, 1));
+            }
+            else
+            {
+                Error("Не выбрано мероприятие");
+            }
+        }
     }
 }

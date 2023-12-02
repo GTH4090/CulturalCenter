@@ -141,7 +141,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FreeRoomsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RentRoomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -229,8 +237,14 @@
     <Compile Include="Pages\EventTypePage.xaml.cs">
       <DependentUpon>EventTypePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FreeRoomsPage.xaml.cs">
+      <DependentUpon>FreeRoomsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RentRoomPage.xaml.cs">
+      <DependentUpon>RentRoomPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RoomEdit.xaml.cs">
       <DependentUpon>RoomEdit.xaml</DependentUpon>
@@ -284,6 +298,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Event.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.EventType.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.RentRoom.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Room.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Status.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.WorkOrder.datasource" />

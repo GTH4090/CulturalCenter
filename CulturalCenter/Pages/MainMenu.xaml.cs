@@ -73,5 +73,15 @@ namespace CulturalCenter.Pages
             NavigationService.Navigate(new DesktopPage());
 
         }
+
+        private void RentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RentRoomPage());
+        }
+
+        private void FreeroomsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new FreeRoomsPage());
+        }
     }
 }
