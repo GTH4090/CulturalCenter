@@ -31,5 +31,6 @@ namespace CulturalCenter.Models
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<WorkOrder> WorkOrder { get; set; }
         public virtual DbSet<WorkType> WorkType { get; set; }
+        public virtual DbSet<RentRoom> RentRoom { get; set; }
     }
 }

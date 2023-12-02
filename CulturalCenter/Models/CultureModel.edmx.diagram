@@ -16,6 +16,9 @@
         <AssociationConnector Association="mainModel.FK_WorkOrder_2_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_WorkOrder_1_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_WorkOrder_0_0" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="mainModel.RentRoom" Width="1.5" PointX="5.25" PointY="5.875" />
+        <AssociationConnector Association="mainModel.FK_RentRoom_1_0" />
+        <AssociationConnector Association="mainModel.FK_RentRoom_0_0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

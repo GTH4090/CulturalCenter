@@ -18,6 +18,7 @@ namespace CulturalCenter.Models
         public Event()
         {
             this.WorkOrder = new HashSet<WorkOrder>();
+            this.RentRoom = new HashSet<RentRoom>();
         }
     
         public long Id { get; set; }
@@ -28,5 +29,7 @@ namespace CulturalCenter.Models
         public virtual EventType EventType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrder> WorkOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RentRoom> RentRoom { get; set; }
     }
 }

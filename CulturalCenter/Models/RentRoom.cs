@@ -12,21 +12,17 @@ namespace CulturalCenter.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Room
+    public partial class RentRoom
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Room()
-        {
-            this.WorkOrder = new HashSet<WorkOrder>();
-            this.RentRoom = new HashSet<RentRoom>();
-        }
-    
         public long Id { get; set; }
-        public string Name { get; set; }
+        public System.DateTime CreationDate { get; set; }
+        public long EventId { get; set; }
+        public System.DateTime DateStart { get; set; }
+        public System.DateTime DateEnd { get; set; }
+        public long RoomId { get; set; }
+        public string Comment { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RentRoom> RentRoom { get; set; }
+        public virtual Event Event { get; set; }
+        public virtual Room Room { get; set; }
     }
 }
