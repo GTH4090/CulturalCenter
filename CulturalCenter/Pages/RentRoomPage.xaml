@@ -8,24 +8,24 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Аредна помещения" Loaded="Page_Loaded">
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <GroupBox Header="Мероприятие">
                 <ComboBox x:Name="EventCbx" SelectedItem="{Binding Event}" DisplayMemberPath="Description" SelectionChanged="EventCbx_SelectionChanged"/>
             </GroupBox>
             <GroupBox Header="Дата начала">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker x:Name="StartDp"  SelectedDate="{Binding StartDate}" SelectedDateChanged="StartDp_SelectedDateChanged"/>
+                    <DatePicker x:Name="StartDp"   SelectedDateChanged="StartDp_SelectedDateChanged"/>
                     <Label Content="Время(чч:мм):"/>
-                    <TextBox x:Name="StartTimeTbx" Text="0"/>
+                    <TextBox x:Name="StartTimeTbx" Text="0:0"/>
                 </StackPanel>
 
             </GroupBox>
             <GroupBox Header="Дата окончания">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker x:Name="EndDp"  SelectedDate="{Binding StartDate}" SelectedDateChanged="EndDp_SelectedDateChanged"/>
+                    <DatePicker x:Name="EndDp"   SelectedDateChanged="EndDp_SelectedDateChanged"/>
                     <Label Content="Время(чч:мм):"/>
-                    <TextBox x:Name="EndTimeTbx" Text="0"/>
+                    <TextBox x:Name="EndTimeTbx" Text="0:0"/>
                 </StackPanel>
 
             </GroupBox>

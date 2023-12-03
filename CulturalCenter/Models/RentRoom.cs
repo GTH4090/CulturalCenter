@@ -15,10 +15,10 @@ namespace CulturalCenter.Models
     public partial class RentRoom
     {
         public long Id { get; set; }
-        public System.DateTime CreationDate { get; set; }
+        public string CreationDate { get; set; }
         public long EventId { get; set; }
-        public System.DateTime DateStart { get; set; }
-        public System.DateTime DateEnd { get; set; }
+        public string DateStart { get; set; }
+        public string DateEnd { get; set; }
         public long RoomId { get; set; }
         public string Comment { get; set; }
     

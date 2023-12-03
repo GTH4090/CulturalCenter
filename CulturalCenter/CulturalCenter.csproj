@@ -183,41 +183,41 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CultureModel.Context.cs">
+    <Compile Include="Models\CultModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CultureModel.Context.tt</DependentUpon>
+      <DependentUpon>CultModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CultureModel.cs">
+    <Compile Include="Models\CultModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CultureModel.Designer.cs">
+    <Compile Include="Models\CultModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CultureModel.edmx</DependentUpon>
+      <DependentUpon>CultModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Event.cs">
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventType.cs">
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RentRoom.cs">
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Room.cs">
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Status.cs">
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WorkOrder.cs">
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WorkType.cs">
-      <DependentUpon>CultureModel.tt</DependentUpon>
+      <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WorkTypeEdit.xaml.cs">
       <DependentUpon>WorkTypeEdit.xaml</DependentUpon>
@@ -288,12 +288,12 @@
     <None Include="Database\CulturalCenter.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <EntityDeploy Include="Models\CultureModel.edmx">
+    <EntityDeploy Include="Models\CultModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CultureModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>CultModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\CultureModel.edmx.diagram">
-      <DependentUpon>CultureModel.edmx</DependentUpon>
+    <None Include="Models\CultModel.edmx.diagram">
+      <DependentUpon>CultModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Event.datasource" />
@@ -330,15 +330,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\CultureModel.Context.tt">
+    <Content Include="Models\CultModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CultureModel.edmx</DependentUpon>
-      <LastGenOutput>CultureModel.Context.cs</LastGenOutput>
+      <DependentUpon>CultModel.edmx</DependentUpon>
+      <LastGenOutput>CultModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\CultureModel.tt">
+    <Content Include="Models\CultModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CultureModel.edmx</DependentUpon>
-      <LastGenOutput>CultureModel.cs</LastGenOutput>
+      <DependentUpon>CultModel.edmx</DependentUpon>
+      <LastGenOutput>CultModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище mainModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=E:\HACKERMAN\Repos\CultCenter\123213\CulturalCenter\Database\CulturalCenter.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище mainModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=E:\HACKERMAN\Repos\CultCenter\123213\CulturalCenter\Database\CulturalCenter.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="Id" />
@@ -26,10 +26,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="CreationDate" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="EventId" Type="integer" Nullable="false" />
-          <Property Name="DateStart" Type="datetime" Nullable="false" />
-          <Property Name="DateEnd" Type="datetime" Nullable="false" />
+          <Property Name="DateStart" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="DateEnd" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="RoomId" Type="integer" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
@@ -188,7 +188,8 @@
             <End Role="WorkOrder" EntitySet="WorkOrder" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -201,8 +202,8 @@
           <Property Name="Date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EventType" Relationship="Self.FK_Event_0_0" FromRole="Event" ToRole="EventType" />
+          <NavigationProperty Name="RentRoom" Relationship="Self.FK_RentRoom_1_0" FromRole="Event" ToRole="RentRoom" />
           <NavigationProperty Name="WorkOrder" Relationship="Self.FK_WorkOrder_3_0" FromRole="Event" ToRole="WorkOrder" />
-          <NavigationProperty Name="RentRoom" Relationship="mainModel.FK_RentRoom_1_0" FromRole="Event" ToRole="RentRoom" />
         </EntityType>
         <EntityType Name="EventType">
           <Key>
@@ -212,14 +213,28 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Event_0_0" FromRole="EventType" ToRole="Event" />
         </EntityType>
+        <EntityType Name="RentRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EventId" Type="Int64" Nullable="false" />
+          <Property Name="DateStart" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateEnd" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomId" Type="Int64" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_RentRoom_1_0" FromRole="RentRoom" ToRole="Event" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_RentRoom_0_0" FromRole="RentRoom" ToRole="Room" />
+        </EntityType>
         <EntityType Name="Room">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RentRoom" Relationship="Self.FK_RentRoom_0_0" FromRole="Room" ToRole="RentRoom" />
           <NavigationProperty Name="WorkOrder" Relationship="Self.FK_WorkOrder_2_0" FromRole="Room" ToRole="WorkOrder" />
-          <NavigationProperty Name="RentRoom" Relationship="mainModel.FK_RentRoom_0_0" FromRole="Room" ToRole="RentRoom" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -266,6 +281,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RentRoom_1_0">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="RentRoom" Type="Self.RentRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentRoom">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WorkOrder_3_0">
           <End Role="Event" Type="Self.Event" Multiplicity="1" />
           <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
@@ -275,6 +302,18 @@
             </Principal>
             <Dependent Role="WorkOrder">
               <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentRoom_0_0">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="RentRoom" Type="Self.RentRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentRoom">
+              <PropertyRef Name="RoomId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -314,9 +353,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="mainEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="mainEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Event" EntityType="Self.Event" />
           <EntitySet Name="EventType" EntityType="Self.EventType" />
+          <EntitySet Name="RentRoom" EntityType="Self.RentRoom" />
           <EntitySet Name="Room" EntityType="Self.Room" />
           <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="WorkOrder" EntityType="Self.WorkOrder" />
@@ -325,9 +365,17 @@
             <End Role="EventType" EntitySet="EventType" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
+          <AssociationSet Name="FK_RentRoom_1_0" Association="Self.FK_RentRoom_1_0">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="RentRoom" EntitySet="RentRoom" />
+          </AssociationSet>
           <AssociationSet Name="FK_WorkOrder_3_0" Association="Self.FK_WorkOrder_3_0">
             <End Role="Event" EntitySet="Event" />
             <End Role="WorkOrder" EntitySet="WorkOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentRoom_0_0" Association="Self.FK_RentRoom_0_0">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="RentRoom" EntitySet="RentRoom" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkOrder_2_0" Association="Self.FK_WorkOrder_2_0">
             <End Role="Room" EntitySet="Room" />
@@ -341,60 +389,13 @@
             <End Role="WorkType" EntitySet="WorkType" />
             <End Role="WorkOrder" EntitySet="WorkOrder" />
           </AssociationSet>
-          <EntitySet Name="RentRoom" EntityType="mainModel.RentRoom" />
-          <AssociationSet Name="FK_RentRoom_1_0" Association="mainModel.FK_RentRoom_1_0">
-            <End Role="Event" EntitySet="Event" />
-            <End Role="RentRoom" EntitySet="RentRoom" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RentRoom_0_0" Association="mainModel.FK_RentRoom_0_0">
-            <End Role="Room" EntitySet="Room" />
-            <End Role="RentRoom" EntitySet="RentRoom" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="RentRoom">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
-          <Property Name="EventId" Type="Int64" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" />
-          <Property Name="DateEnd" Type="DateTime" Nullable="false" />
-          <Property Name="RoomId" Type="Int64" Nullable="false" />
-          <Property Name="Comment" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Event" Relationship="mainModel.FK_RentRoom_1_0" FromRole="RentRoom" ToRole="Event" />
-          <NavigationProperty Name="Room" Relationship="mainModel.FK_RentRoom_0_0" FromRole="RentRoom" ToRole="Room" />
-        </EntityType>
-        <Association Name="FK_RentRoom_1_0">
-          <End Type="mainModel.Event" Role="Event" Multiplicity="1" />
-          <End Type="mainModel.RentRoom" Role="RentRoom" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RentRoom">
-              <PropertyRef Name="EventId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RentRoom_0_0">
-          <End Type="mainModel.Room" Role="Room" Multiplicity="1" />
-          <End Type="mainModel.RentRoom" Role="RentRoom" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RentRoom">
-              <PropertyRef Name="RoomId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище mainModelContainer" CdmEntityContainer="mainEntities3">
+        <EntityContainerMapping StorageEntityContainer="Хранилище mainModelContainer" CdmEntityContainer="mainEntities4">
           <EntitySetMapping Name="Event">
             <EntityTypeMapping TypeName="mainModel.Event">
               <MappingFragment StoreEntitySet="Event">
@@ -410,6 +411,19 @@
               <MappingFragment StoreEntitySet="EventType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentRoom">
+            <EntityTypeMapping TypeName="mainModel.RentRoom">
+              <MappingFragment StoreEntitySet="RentRoom">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -448,19 +462,6 @@
               <MappingFragment StoreEntitySet="WorkType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RentRoom">
-            <EntityTypeMapping TypeName="mainModel.RentRoom">
-              <MappingFragment StoreEntitySet="RentRoom">
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
-                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
-                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-                <ScalarProperty Name="EventId" ColumnName="EventId" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

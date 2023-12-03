@@ -10,7 +10,7 @@ namespace CulturalCenter.Classes
 {
     internal class Helper
     {
-        public static mainEntities3 Db = new mainEntities3();
+        public static mainEntities4 Db = new mainEntities4();
         public static void Error(string message = "Ошибка подключения к БД")
         {
             MessageBox.Show(message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);

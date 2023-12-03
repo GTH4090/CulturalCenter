@@ -13,10 +13,10 @@ namespace CulturalCenter.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class mainEntities3 : DbContext
+    public partial class mainEntities4 : DbContext
     {
-        public mainEntities3()
-            : base("name=mainEntities3")
+        public mainEntities4()
+            : base("name=mainEntities4")
         {
         }
     
@@ -27,10 +27,10 @@ namespace CulturalCenter.Models
     
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<EventType> EventType { get; set; }
+        public virtual DbSet<RentRoom> RentRoom { get; set; }
         public virtual DbSet<Room> Room { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<WorkOrder> WorkOrder { get; set; }
         public virtual DbSet<WorkType> WorkType { get; set; }
-        public virtual DbSet<RentRoom> RentRoom { get; set; }
     }
 }
