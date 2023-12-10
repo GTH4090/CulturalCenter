@@ -12,23 +12,17 @@ namespace CulturalCenter.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Room
+    public partial class CheduleType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Room()
+        public CheduleType()
         {
-            this.RentRoom = new HashSet<RentRoom>();
-            this.WorkOrder = new HashSet<WorkOrder>();
             this.ClubWork = new HashSet<ClubWork>();
         }
     
         public long Id { get; set; }
         public string Name { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RentRoom> RentRoom { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClubWork> ClubWork { get; set; }
     }

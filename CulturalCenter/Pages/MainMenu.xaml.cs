@@ -76,12 +76,27 @@ namespace CulturalCenter.Pages
 
         private void RentBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RentRoomPage());
+            NavigationService.Navigate(new RentroomsListPage());
         }
 
         private void FreeroomsBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new FreeRoomsPage());
+        }
+
+        private void TeacherBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TeacherPage());
+        }
+
+        private void ClubTypeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ClubTypePage());
+        }
+
+        private void ClubWorkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ClubWorka());
         }
     }
 }

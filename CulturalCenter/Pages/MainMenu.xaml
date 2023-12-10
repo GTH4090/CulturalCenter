@@ -42,6 +42,9 @@
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button x:Name="RoomsBtn3" Content="Помещения" Click="RoomsBtn_Click"/>
                     <Button x:Name="DesktopBtn3" Content="Рабочий стол" Click="DesktopBtn_Click"/>
+                    <Button x:Name="TeacherBtn"  Content="Преподаватели" Click="TeacherBtn_Click"/>
+                    <Button x:Name="ClubTypeBtn" Content="Типы кружков" Click="ClubTypeBtn_Click"/>
+                    <Button x:Name="ClubWorkBtn" Content="Работа кружков" Click="ClubWorkBtn_Click"/>
                 </StackPanel>
                 
 

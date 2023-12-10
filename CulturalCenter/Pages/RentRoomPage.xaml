@@ -33,7 +33,7 @@
                 <ComboBox x:Name="RoomCbx" DisplayMemberPath="Name" SelectedItem="{Binding Room}"/>
             </GroupBox>
             <GroupBox Header="Комментарий">
-                <TextBox x:Name="DescriptionTbx"  AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Description}"/>
+                <TextBox x:Name="DescriptionTbx"  AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Comment}"/>
             </GroupBox>
             <Button x:Name="OkBtn" Content="Ок" Click="OkBtn_Click"/>
         </StackPanel>

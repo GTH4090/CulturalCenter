@@ -19,6 +19,18 @@
         <AssociationConnector Association="mainModel.FK_WorkOrder_2_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_WorkOrder_1_0" ManuallyRouted="false" />
         <AssociationConnector Association="mainModel.FK_WorkOrder_0_0" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="mainModel.CheduleType" Width="1.5" PointX="3.75" PointY="13.625" />
+        <EntityTypeShape EntityType="mainModel.ClubType" Width="1.5" PointX="3.75" PointY="21" />
+        <EntityTypeShape EntityType="mainModel.ClubWork" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="mainModel.Teacher" Width="1.5" PointX="3.75" PointY="18.625" />
+        <EntityTypeShape EntityType="mainModel.WeekDay" Width="1.5" PointX="3.75" PointY="16" />
+        <AssociationConnector Association="mainModel.FK_ClubWork_4_0" />
+        <AssociationConnector Association="mainModel.FK_ClubWork_6_0" />
+        <AssociationConnector Association="mainModel.FK_ClubWork_0_0" />
+        <AssociationConnector Association="mainModel.FK_ClubWork_1_0" />
+        <AssociationConnector Association="mainModel.FK_ClubWork_2_0" />
+        <AssociationConnector Association="mainModel.FK_ClubWork_3_0" />
+        <AssociationConnector Association="mainModel.FK_ClubWork_5_0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

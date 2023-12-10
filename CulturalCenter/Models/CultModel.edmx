@@ -4,7 +4,38 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище mainModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=E:\HACKERMAN\Repos\CultCenter\123213\CulturalCenter\Database\CulturalCenter.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище mainModel" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=E:\HACKERMAN\Repos\CultCenter\123213\CulturalCenter\Database\CulturalCenter.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CheduleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClubType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClubWork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="DateStart" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="ClubTipeId" Type="integer" Nullable="false" />
+          <Property Name="RoomId" Type="integer" Nullable="false" />
+          <Property Name="ScheduleTypeId" Type="integer" Nullable="false" />
+          <Property Name="FirstLessonId" Type="integer" />
+          <Property Name="SecondlessonId" Type="integer" />
+          <Property Name="ThirdLessonId" Type="integer" />
+          <Property Name="TimeStart" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="TimeEnd" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="TeacherId" Type="integer" Nullable="false" />
+        </EntityType>
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="Id" />
@@ -47,6 +78,20 @@
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
         </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeekDay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
         <EntityType Name="WorkOrder">
           <Key>
             <PropertyRef Name="Id" />
@@ -67,6 +112,90 @@
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ClubWork_0_0">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="ClubWork" Type="Self.ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_1_0">
+          <End Role="WeekDay" Type="Self.WeekDay" Multiplicity="0..1" />
+          <End Role="ClubWork" Type="Self.ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="ThirdLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_2_0">
+          <End Role="WeekDay" Type="Self.WeekDay" Multiplicity="0..1" />
+          <End Role="ClubWork" Type="Self.ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="SecondlessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_3_0">
+          <End Role="WeekDay" Type="Self.WeekDay" Multiplicity="0..1" />
+          <End Role="ClubWork" Type="Self.ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="FirstLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_4_0">
+          <End Role="CheduleType" Type="Self.CheduleType" Multiplicity="1" />
+          <End Role="ClubWork" Type="Self.ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheduleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="ScheduleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_5_0">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="ClubWork" Type="Self.ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_6_0">
+          <End Role="ClubType" Type="Self.ClubType" Multiplicity="1" />
+          <End Role="ClubWork" Type="Self.ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClubType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="ClubTipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Event_0_0">
           <End Role="EventType" Type="Self.EventType" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
@@ -152,13 +281,46 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище mainModelContainer">
+          <EntitySet Name="CheduleType" EntityType="Self.CheduleType" store:Type="Tables" />
+          <EntitySet Name="ClubType" EntityType="Self.ClubType" store:Type="Tables" />
+          <EntitySet Name="ClubWork" EntityType="Self.ClubWork" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" store:Type="Tables" />
           <EntitySet Name="EventType" EntityType="Self.EventType" store:Type="Tables" />
           <EntitySet Name="RentRoom" EntityType="Self.RentRoom" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" store:Type="Tables" />
+          <EntitySet Name="WeekDay" EntityType="Self.WeekDay" store:Type="Tables" />
           <EntitySet Name="WorkOrder" EntityType="Self.WorkOrder" store:Type="Tables" />
           <EntitySet Name="WorkType" EntityType="Self.WorkType" store:Type="Tables" />
+          <AssociationSet Name="FK_ClubWork_0_0" Association="Self.FK_ClubWork_0_0">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_1_0" Association="Self.FK_ClubWork_1_0">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_2_0" Association="Self.FK_ClubWork_2_0">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_3_0" Association="Self.FK_ClubWork_3_0">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_4_0" Association="Self.FK_ClubWork_4_0">
+            <End Role="CheduleType" EntitySet="CheduleType" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_5_0" Association="Self.FK_ClubWork_5_0">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_6_0" Association="Self.FK_ClubWork_6_0">
+            <End Role="ClubType" EntitySet="ClubType" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
           <AssociationSet Name="FK_Event_0_0" Association="Self.FK_Event_0_0">
             <End Role="EventType" EntitySet="EventType" />
             <End Role="Event" EntitySet="Event" />
@@ -188,8 +350,7 @@
             <End Role="WorkOrder" EntitySet="WorkOrder" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -235,6 +396,7 @@
           <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="RentRoom" Relationship="Self.FK_RentRoom_0_0" FromRole="Room" ToRole="RentRoom" />
           <NavigationProperty Name="WorkOrder" Relationship="Self.FK_WorkOrder_2_0" FromRole="Room" ToRole="WorkOrder" />
+          <NavigationProperty Name="ClubWork" Relationship="mainModel.FK_ClubWork_5_0" FromRole="Room" ToRole="ClubWork" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -389,7 +551,182 @@
             <End Role="WorkType" EntitySet="WorkType" />
             <End Role="WorkOrder" EntitySet="WorkOrder" />
           </AssociationSet>
+          <EntitySet Name="CheduleType" EntityType="mainModel.CheduleType" />
+          <EntitySet Name="ClubType" EntityType="mainModel.ClubType" />
+          <EntitySet Name="ClubWork" EntityType="mainModel.ClubWork" />
+          <EntitySet Name="Teacher" EntityType="mainModel.Teacher" />
+          <EntitySet Name="WeekDay" EntityType="mainModel.WeekDay" />
+          <AssociationSet Name="FK_ClubWork_4_0" Association="mainModel.FK_ClubWork_4_0">
+            <End Role="CheduleType" EntitySet="CheduleType" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_6_0" Association="mainModel.FK_ClubWork_6_0">
+            <End Role="ClubType" EntitySet="ClubType" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_0_0" Association="mainModel.FK_ClubWork_0_0">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_1_0" Association="mainModel.FK_ClubWork_1_0">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_2_0" Association="mainModel.FK_ClubWork_2_0">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_3_0" Association="mainModel.FK_ClubWork_3_0">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubWork_5_0" Association="mainModel.FK_ClubWork_5_0">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="ClubWork" EntitySet="ClubWork" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CheduleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClubWork" Relationship="mainModel.FK_ClubWork_4_0" FromRole="CheduleType" ToRole="ClubWork" />
+        </EntityType>
+        <EntityType Name="ClubType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClubWork" Relationship="mainModel.FK_ClubWork_6_0" FromRole="ClubType" ToRole="ClubWork" />
+        </EntityType>
+        <EntityType Name="ClubWork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="DateStart" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ClubTipeId" Type="Int64" Nullable="false" />
+          <Property Name="RoomId" Type="Int64" Nullable="false" />
+          <Property Name="ScheduleTypeId" Type="Int64" Nullable="false" />
+          <Property Name="FirstLessonId" Type="Int64" />
+          <Property Name="SecondlessonId" Type="Int64" />
+          <Property Name="ThirdLessonId" Type="Int64" />
+          <Property Name="TimeStart" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="TimeEnd" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="CheduleType" Relationship="mainModel.FK_ClubWork_4_0" FromRole="ClubWork" ToRole="CheduleType" />
+          <NavigationProperty Name="ClubType" Relationship="mainModel.FK_ClubWork_6_0" FromRole="ClubWork" ToRole="ClubType" />
+          <NavigationProperty Name="Teacher" Relationship="mainModel.FK_ClubWork_0_0" FromRole="ClubWork" ToRole="Teacher" />
+          <NavigationProperty Name="WeekDay" Relationship="mainModel.FK_ClubWork_1_0" FromRole="ClubWork" ToRole="WeekDay" />
+          <NavigationProperty Name="WeekDay1" Relationship="mainModel.FK_ClubWork_2_0" FromRole="ClubWork" ToRole="WeekDay" />
+          <NavigationProperty Name="WeekDay2" Relationship="mainModel.FK_ClubWork_3_0" FromRole="ClubWork" ToRole="WeekDay" />
+          <NavigationProperty Name="Room" Relationship="mainModel.FK_ClubWork_5_0" FromRole="ClubWork" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClubWork" Relationship="mainModel.FK_ClubWork_0_0" FromRole="Teacher" ToRole="ClubWork" />
+        </EntityType>
+        <EntityType Name="WeekDay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClubWork" Relationship="mainModel.FK_ClubWork_1_0" FromRole="WeekDay" ToRole="ClubWork" />
+          <NavigationProperty Name="ClubWork1" Relationship="mainModel.FK_ClubWork_2_0" FromRole="WeekDay" ToRole="ClubWork" />
+          <NavigationProperty Name="ClubWork2" Relationship="mainModel.FK_ClubWork_3_0" FromRole="WeekDay" ToRole="ClubWork" />
+        </EntityType>
+        <Association Name="FK_ClubWork_4_0">
+          <End Type="mainModel.CheduleType" Role="CheduleType" Multiplicity="1" />
+          <End Type="mainModel.ClubWork" Role="ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheduleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="ScheduleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_6_0">
+          <End Type="mainModel.ClubType" Role="ClubType" Multiplicity="1" />
+          <End Type="mainModel.ClubWork" Role="ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClubType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="ClubTipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_0_0">
+          <End Type="mainModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="mainModel.ClubWork" Role="ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_1_0">
+          <End Type="mainModel.WeekDay" Role="WeekDay" Multiplicity="0..1" />
+          <End Type="mainModel.ClubWork" Role="ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="ThirdLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_2_0">
+          <End Type="mainModel.WeekDay" Role="WeekDay" Multiplicity="0..1" />
+          <End Type="mainModel.ClubWork" Role="ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="SecondlessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_3_0">
+          <End Type="mainModel.WeekDay" Role="WeekDay" Multiplicity="0..1" />
+          <End Type="mainModel.ClubWork" Role="ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="FirstLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubWork_5_0">
+          <End Type="mainModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="mainModel.ClubWork" Role="ClubWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClubWork">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -462,6 +799,56 @@
               <MappingFragment StoreEntitySet="WorkType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheduleType">
+            <EntityTypeMapping TypeName="mainModel.CheduleType">
+              <MappingFragment StoreEntitySet="CheduleType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClubType">
+            <EntityTypeMapping TypeName="mainModel.ClubType">
+              <MappingFragment StoreEntitySet="ClubType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClubWork">
+            <EntityTypeMapping TypeName="mainModel.ClubWork">
+              <MappingFragment StoreEntitySet="ClubWork">
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="ThirdLessonId" ColumnName="ThirdLessonId" />
+                <ScalarProperty Name="SecondlessonId" ColumnName="SecondlessonId" />
+                <ScalarProperty Name="FirstLessonId" ColumnName="FirstLessonId" />
+                <ScalarProperty Name="ScheduleTypeId" ColumnName="ScheduleTypeId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="ClubTipeId" ColumnName="ClubTipeId" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="mainModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeekDay">
+            <EntityTypeMapping TypeName="mainModel.WeekDay">
+              <MappingFragment StoreEntitySet="WeekDay">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -24,13 +24,24 @@ namespace CulturalCenter.Pages
     {
         long _id;
         int _type;
+        long _rentId;
         bool yes = false;
-        public RentRoomPage(long id = -1, int type = -1)
+        public RentRoomPage(long id = -1, int type = -1, long RentId = -1)
         {
             _id = id;
             _type = type;
+            _rentId = RentId;
             InitializeComponent();
-            MainGrid.DataContext = new RentRoom();
+            
+            if(_rentId == -1)
+            {
+                MainGrid.DataContext = new RentRoom();
+
+            }
+            else
+            {
+                MainGrid.DataContext = Db.RentRoom.FirstOrDefault(el => el.Id == _rentId);
+            }
         }
 
         private void EventCbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -53,7 +64,7 @@ namespace CulturalCenter.Pages
                     || (Convert.ToDateTime(l.DateStart) < start && Convert.ToDateTime(l.DateEnd) >= start)) == null).ToList();
 
                     RoomCbx.ItemsSource = items;
-                    RoomCbx.SelectedIndex = 0;
+                    
 
                 }
 
@@ -83,7 +94,11 @@ namespace CulturalCenter.Pages
                 var end = EndDp.SelectedDate.Value;
                 (MainGrid.DataContext as RentRoom).DateStart = new DateTime(start.Year, start.Month, start.Day, Convert.ToInt32(StartTimeTbx.Text.Split(':')[0]), Convert.ToInt32(StartTimeTbx.Text.Split(':')[1]), 0).ToString();
                 (MainGrid.DataContext as RentRoom).DateEnd = new DateTime(end.Year, end.Month, end.Day, Convert.ToInt32(EndTimeTbx.Text.Split(':')[0]), Convert.ToInt32(EndTimeTbx.Text.Split(':')[1]), 0).ToString();
-                Db.RentRoom.Add(MainGrid.DataContext as RentRoom);
+                if(_rentId == -1)
+                {
+                    Db.RentRoom.Add(MainGrid.DataContext as RentRoom);
+
+                }
                 Db.SaveChanges();
                 NavigationService.GoBack();
 
@@ -103,10 +118,23 @@ namespace CulturalCenter.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            
             EventCbx.ItemsSource = Db.Event.ToList();
-            EventCbx.SelectedIndex = 0;
-            StartDp.SelectedDate = DateTime.Now.AddDays(-1);
-            EndDp.SelectedDate  = DateTime.Now.AddDays(1);
+            if(_rentId == -1)
+            {
+                EventCbx.SelectedIndex = 0;
+                StartDp.SelectedDate = DateTime.Now.AddDays(-1);
+                EndDp.SelectedDate = DateTime.Now.AddDays(1);
+            }
+            else
+            {
+                StartDp.SelectedDate = Convert.ToDateTime((MainGrid.DataContext as RentRoom).DateStart).Date;
+                EndDp.SelectedDate = Convert.ToDateTime((MainGrid.DataContext as RentRoom).DateEnd).Date;
+                StartTimeTbx.Text = Convert.ToDateTime((MainGrid.DataContext as RentRoom).DateStart).Hour + ":" + Convert.ToDateTime((MainGrid.DataContext as RentRoom).DateStart).Minute;
+                EndTimeTbx.Text = Convert.ToDateTime((MainGrid.DataContext as RentRoom).DateEnd).Hour + ":" + Convert.ToDateTime((MainGrid.DataContext as RentRoom).DateEnd).Minute;
+                EventCbx.SelectedItem = (MainGrid.DataContext as RentRoom).Event;
+            }
+
             yes = true;
             
             if(_type == 1)
@@ -121,7 +149,19 @@ namespace CulturalCenter.Pages
             }
             else
             {
-                loadRooms();
+                
+                
+                if(_rentId == -1)
+                {
+                    loadRooms();
+                    RoomCbx.SelectedIndex = 0;
+                }
+                else
+                {
+                    RoomCbx.ItemsSource = Db.Room.ToList();
+                    RoomCbx.SelectedItem = (MainGrid.DataContext as RentRoom).Room;
+
+                }
             }
             
             

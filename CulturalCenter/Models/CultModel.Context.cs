@@ -32,5 +32,10 @@ namespace CulturalCenter.Models
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<WorkOrder> WorkOrder { get; set; }
         public virtual DbSet<WorkType> WorkType { get; set; }
+        public virtual DbSet<CheduleType> CheduleType { get; set; }
+        public virtual DbSet<ClubType> ClubType { get; set; }
+        public virtual DbSet<ClubWork> ClubWork { get; set; }
+        public virtual DbSet<Teacher> Teacher { get; set; }
+        public virtual DbSet<WeekDay> WeekDay { get; set; }
     }
 }

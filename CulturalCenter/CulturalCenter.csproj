@@ -121,6 +121,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ClubTypeEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClubTypePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClubWorka.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClubWorkEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DesktopPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +169,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RentroomsListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\RoomEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +186,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\StatusPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +211,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CheduleType.cs">
+      <DependentUpon>CultModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClubType.cs">
+      <DependentUpon>CultModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClubWork.cs">
+      <DependentUpon>CultModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CultModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -213,6 +250,12 @@
     <Compile Include="Models\Status.cs">
       <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Teacher.cs">
+      <DependentUpon>CultModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WeekDay.cs">
+      <DependentUpon>CultModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\WorkOrder.cs">
       <DependentUpon>CultModel.tt</DependentUpon>
     </Compile>
@@ -221,6 +264,18 @@
     </Compile>
     <Compile Include="Models\WorkTypeEdit.xaml.cs">
       <DependentUpon>WorkTypeEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClubTypeEdit.xaml.cs">
+      <DependentUpon>ClubTypeEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClubTypePage.xaml.cs">
+      <DependentUpon>ClubTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClubWorka.xaml.cs">
+      <DependentUpon>ClubWorka.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClubWorkEdit.xaml.cs">
+      <DependentUpon>ClubWorkEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DesktopPage.xaml.cs">
       <DependentUpon>DesktopPage.xaml</DependentUpon>
@@ -246,6 +301,9 @@
     <Compile Include="Pages\RentRoomPage.xaml.cs">
       <DependentUpon>RentRoomPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RentroomsListPage.xaml.cs">
+      <DependentUpon>RentroomsListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RoomEdit.xaml.cs">
       <DependentUpon>RoomEdit.xaml</DependentUpon>
     </Compile>
@@ -257,6 +315,12 @@
     </Compile>
     <Compile Include="Pages\StatusPage.xaml.cs">
       <DependentUpon>StatusPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherEdit.xaml.cs">
+      <DependentUpon>TeacherEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherPage.xaml.cs">
+      <DependentUpon>TeacherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WorkOrderEdit.xaml.cs">
       <DependentUpon>WorkOrderEdit.xaml</DependentUpon>
@@ -296,11 +360,17 @@
       <DependentUpon>CultModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.CheduleType.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.ClubType.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.ClubWork.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Event.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.EventType.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.mainEntities4.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.RentRoom.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Room.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.Status.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.Teacher.datasource" />
+    <None Include="Properties\DataSources\CulturalCenter.Models.WeekDay.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.WorkOrder.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.WorkType.datasource" />
     <None Include="Properties\DataSources\CulturalCenter.Models.WorkTypeEdit.datasource" />
