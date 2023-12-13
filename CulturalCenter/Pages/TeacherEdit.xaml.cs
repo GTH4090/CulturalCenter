@@ -54,12 +54,16 @@ namespace CulturalCenter.Pages
         {
             try
             {
-                if (_id == -1)
+                if ((grid1.DataContext as Teacher).Name != null)
                 {
-                    Db.Teacher.Add(grid1.DataContext as Teacher);
+                    if (_id == -1)
+                    {
+                        Db.Teacher.Add(grid1.DataContext as Teacher);
+                    }
+                    Db.SaveChanges();
+                    NavigationService.GoBack();
                 }
-                Db.SaveChanges();
-                NavigationService.GoBack();
+               
             }
             catch (Exception ex)
             {

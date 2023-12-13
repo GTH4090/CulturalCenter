@@ -52,13 +52,17 @@ namespace CulturalCenter.Pages
 
             try
             {
-                (MainSp.DataContext as ClubWork).DateStart = StartDateeDp.SelectedDate.Value.ToString("d");
-                if(_id == -1)
+                if((MainSp.DataContext as ClubWork).Name != null )
                 {
-                    Db.ClubWork.Add(MainSp.DataContext as ClubWork);
+                    (MainSp.DataContext as ClubWork).DateStart = StartDateeDp.SelectedDate.Value.ToString("d");
+                    if (_id == -1)
+                    {
+                        Db.ClubWork.Add(MainSp.DataContext as ClubWork);
+                    }
+                    Db.SaveChanges();
+                    NavigationService.GoBack();
                 }
-                Db.SaveChanges();
-            NavigationService.GoBack();
+                
 
             }
             catch (Exception ex)

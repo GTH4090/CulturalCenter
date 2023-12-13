@@ -53,12 +53,16 @@ namespace CulturalCenter.Pages
         {
             try
             {
-                if (_id == -1)
+                if ((grid1.DataContext as ClubType).Name != null)
                 {
-                    Db.ClubType.Add(grid1.DataContext as ClubType);
+                    if (_id == -1)
+                    {
+                        Db.ClubType.Add(grid1.DataContext as ClubType);
+                    }
+                    Db.SaveChanges();
+                    NavigationService.GoBack();
                 }
-                Db.SaveChanges();
-                NavigationService.GoBack();
+                
             }
             catch (Exception ex)
             {
