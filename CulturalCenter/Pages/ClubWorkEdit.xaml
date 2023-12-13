@@ -40,7 +40,7 @@
                 <GroupBox Header="Время начала">
                     <TextBox x:Name="StarttimeTbx" Text="{Binding TimeStart}"/>
                 </GroupBox>
-                <GroupBox Header="Время начала">
+                <GroupBox Header="Время конца">
                     <TextBox x:Name="EndtimeTbx" Text="{Binding TimeEnd}"/>
                 </GroupBox>
                 <GroupBox Header="Преподаватель">

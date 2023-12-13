@@ -52,7 +52,14 @@ namespace CulturalCenter.Pages
 
             try
             {
-                if((MainSp.DataContext as ClubWork).Name != null )
+                int startH = -1;
+                int startM = -1;
+                int endH = -1;
+                int endM = -1;
+                
+                if ((MainSp.DataContext as ClubWork).Name != null && Int32.TryParse(StarttimeTbx.Text.Split(':')[0], out startH)
+                    && Int32.TryParse(StarttimeTbx.Text.Split(':')[1], out startM) && Int32.TryParse(EndtimeTbx.Text.Split(':')[0], out endH)
+                    && Int32.TryParse(EndtimeTbx.Text.Split(':')[1], out endM) && startH < 24 && startH > -1 && startM > -1 && startM < 60 && endH > -1 && endH < 24 && endM > -1 && endM < 60)
                 {
                     (MainSp.DataContext as ClubWork).DateStart = StartDateeDp.SelectedDate.Value.ToString("d");
                     if (_id == -1)

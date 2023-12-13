@@ -53,6 +53,8 @@ namespace CulturalCenter.Pages
         {
             try
             {
+                
+                
                 if ((grid1.DataContext as ClubType).Name != null)
                 {
                     if (_id == -1)
