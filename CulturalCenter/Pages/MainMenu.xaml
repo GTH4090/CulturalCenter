@@ -45,6 +45,7 @@
                     <Button x:Name="TeacherBtn"  Content="Преподаватели" Click="TeacherBtn_Click"/>
                     <Button x:Name="ClubTypeBtn" Content="Типы кружков" Click="ClubTypeBtn_Click"/>
                     <Button x:Name="ClubWorkBtn" Content="Работа кружков" Click="ClubWorkBtn_Click"/>
+                    <Button x:Name="ScheduleBtn" Content="Расписание" Click="ScheduleBtn_Click"/>
                 </StackPanel>
                 
 

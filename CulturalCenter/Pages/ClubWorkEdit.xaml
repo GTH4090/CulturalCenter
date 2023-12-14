@@ -38,10 +38,10 @@
                     <ComboBox x:Name="ThirdLessonCbx" DisplayMemberPath="Name" SelectedItem="{Binding WeekDay2}"/>
                 </GroupBox>
                 <GroupBox Header="Время начала">
-                    <TextBox x:Name="StarttimeTbx" Text="{Binding TimeStart}"/>
+                    <TextBox x:Name="StarttimeTbx" Text="{Binding TimeStart}" />
                 </GroupBox>
                 <GroupBox Header="Время конца">
-                    <TextBox x:Name="EndtimeTbx" Text="{Binding TimeEnd}"/>
+                    <TextBox x:Name="EndtimeTbx" Text="{Binding TimeEnd}" />
                 </GroupBox>
                 <GroupBox Header="Преподаватель">
                     <ComboBox x:Name="TeacherCbx"  DisplayMemberPath="Name" SelectedItem="{Binding Teacher}"/>

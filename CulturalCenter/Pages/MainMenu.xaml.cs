@@ -98,5 +98,10 @@ namespace CulturalCenter.Pages
         {
             NavigationService.Navigate(new ClubWorka());
         }
+
+        private void ScheduleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SchedulePage());
+        }
     }
 }

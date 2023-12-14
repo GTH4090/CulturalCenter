@@ -69,12 +69,16 @@ namespace CulturalCenter.Pages
                     Db.SaveChanges();
                     NavigationService.GoBack();
                 }
+                else
+                {
+                    Error("Не правильно заполнены некоторые поля, формат времени - чч:мм");
+                }
                 
 
             }
             catch (Exception ex)
             {
-                Error(ex.Message);
+                Error("Не правильно заполнены некоторые поля, формат времени - чч:мм");
             }
         }
 
@@ -137,6 +141,11 @@ namespace CulturalCenter.Pages
                     ScheduleTypeCbx.SelectedIndex = 0;
                     StartDateeDp.SelectedDate = DateTime.Now;
                     TeacherCbx.SelectedIndex = 0;
+                    (MainSp.DataContext as ClubWork).TimeEnd = "00:00";
+                    (MainSp.DataContext as ClubWork).TimeStart= "00:00";
+                    StarttimeTbx.Text = (MainSp.DataContext as ClubWork).TimeStart;
+                    EndtimeTbx.Text = (MainSp.DataContext as ClubWork).TimeEnd;
+
                 }
                 else
                 {

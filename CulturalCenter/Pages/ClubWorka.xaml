@@ -44,17 +44,20 @@
         </StackPanel>
         <DataGrid x:Name="clubWorkDataGrid" AutoGenerateColumns="False" IsReadOnly="True" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="clubTipeIdColumn" Binding="{Binding ClubType.Name}" Header="Тип кружка" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="dateStartColumn" Binding="{Binding DateStart}" Header="Дата начала ведения" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="firstLessonIdColumn" Binding="{Binding WeekDay.Name}" Header="Первое занятие" Width="SizeToHeader"/>
+
+                <DataGridTextColumn x:Name="clubTipeIdColumn" Binding="{Binding ClubType.Name}" Header="Тип кружка" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Название" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="roomIdColumn" Binding="{Binding RoomId}" Header="Комната" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="scheduleTypeIdColumn" Binding="{Binding CheduleType.Name}" Header="Вариант расписания" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="secondlessonIdColumn" Binding="{Binding WeekDay1.Name}" Header="Второе занятие" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="teacherIdColumn" Binding="{Binding Teacher.Name}" Header="Преподаватель" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="roomIdColumn" Binding="{Binding Room.Name}" Header="Комната" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="scheduleTypeIdColumn" Binding="{Binding CheduleType.Name}" Header="Вариант расписания" Width="SizeToHeader"/>
+
+                <DataGridTextColumn x:Name="firstLessonIdColumn" Binding="{Binding WeekDay.Name}" Header="Первое занятие" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="secondlessonIdColumn" Binding="{Binding WeekDay1.Name}" Header="Второе занятие" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="thirdLessonIdColumn" Binding="{Binding WeekDay2.Name}" Header="Третье занятие" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="timeEndColumn" Binding="{Binding TimeEnd}" Header="Время конца" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="timeStartColumn" Binding="{Binding TimeStart}" Header="Время начала" Width="SizeToHeader"/>
+
+                <DataGridTextColumn x:Name="timeEndColumn" Binding="{Binding TimeEnd}" Header="Время конца" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
